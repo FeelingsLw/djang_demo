@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% block title %}
+登录
+{% endblock  %}
+
+{% block body %}
+      <form class="form-signin" role="form" action="/user/login/" method="post">
+        {% csrf_token %}
+        <h3 class="form-signin-heading">登 录</h3>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="glyphicon glyphicon-user"></i>
+            </div>
+            <input type="text" class="form-control" name="uname" id="username" placeholder="用户名" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class=" glyphicon glyphicon-lock "></i>
+            </div>
+            <input type="password" class="form-control" name="pwd" id="password" placeholder="密码" autocomplete="off" />
+          </div>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> &nbsp Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+          {% if msg %}
+            <div class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>Warning!</strong> {{msg}}
+                      </div>
+        {% endif %}
+      </form>
+{% endblock  %}
