@@ -46,5 +46,5 @@ class RegisterView(View):
         pwd = request.POST.get('pwd')
 
         user = User.objects.create(uname=uname,nick_name=nick_name,phone=phone,sex =sex,pwd=pwd)
-        
+        # 跳转到登录页面
         return redirect(reverse('user:login'))
