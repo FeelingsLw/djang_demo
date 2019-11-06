@@ -1,5 +1,5 @@
 from django.db import models
-
+from clazz.models import Clazz
 # Create your models here.
 class User(models.Model):
     class Meta:
@@ -10,3 +10,4 @@ class User(models.Model):
     pwd = models.CharField(max_length=50)
     sex = models.IntegerField()
     phone = models.IntegerField()
+    clazz = models.ForeignKey(Clazz,on_delete=models.CASCADE)

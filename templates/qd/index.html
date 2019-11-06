@@ -1,0 +1,56 @@
+{% extends 'index_base.html'%}
+{% block title %} 签到 {% endblock %}
+
+
+{% block panel_title %} 签到 {% endblock %}
+{% block panel_body%}
+{% load static %}
+<div class="content-row">
+  <div class="panel-body">
+      <form novalidate="" role="form" class="form-horizontal" action='/qd/index/' method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="col-md-2 control-label">阶段：</label>
+          <div class="col-md-10">
+            <input type="text" required="" placeholder="阶段信息" id="title" class="form-control" name="stage">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">进度：</label>
+          <div class="col-md-10">
+            <input type="text" required="" placeholder="进度" id="subject" class="form-control" name="progress">
+          </div>
+        </div>
+         <div class="form-group">
+          <label class="col-md-2 control-label">Code数</label>
+          <div class="col-md-10">
+            <input type="text" required="" placeholder="Code数" id="subject" class="form-control" name="code_num">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">Bug数</label>
+          <div class="col-md-10">
+            <input type="text" required="" placeholder="Bug数" id="subject" class="form-control" name="bug_num">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="description">备注</label>
+          <div class="col-md-10">
+            <textarea required="" class="form-control" placeholder="备注信息" rows="10" cols="30" id="description" name="description" name='remark'></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-info" type="submit">提 交</button>
+          </div>
+          {% if msg %}
+            {{ msg }}
+          {% endif %}
+        </div>
+      </form>
+    </div>
+</div>
+{% endblock %}
+
+

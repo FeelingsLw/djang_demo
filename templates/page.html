@@ -1,0 +1,36 @@
+
+{% if data.object_list %}
+    <ul class="pagination">
+        <li>
+            <a href="?page=1">
+                <span>首页</span>
+            </a>
+        </li>
+        {% if data.has_previous %}
+            <li>
+                <a href="?page={{ data.previous_page_number }}">
+                    <span>上一页</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for pg in data.paginator.page_range%}
+            {% if pg == data.number %}
+                <li class="active"><a href="#">{{ pg }}</a></li>
+            {% else %}
+                <li><a class="pagination__number" href="?page={{ pg }}">{{ pg }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if data.has_next %}
+            <li>
+                <a href="?page={{ data.next_page_number }}">
+                    <span>下一页</span>
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            <a href="?page={{ data.paginator.num_pages }}">
+                <span>末页</span>
+            </a>
+        </li>
+    </ul>
+{% endif %}

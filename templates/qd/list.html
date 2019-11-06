@@ -1,0 +1,46 @@
+{% extends 'index_base.html'%}
+
+{% block title %} 签到历史 {% endblock %}
+
+
+{% block panel_title %} 签到历史 {% endblock %}
+{% load static %}
+{% block panel_body%}
+<div class="content-row">
+  <table class="table table-bordered table-striped">
+    {% comment %} <colgroup>
+      <col class="col-xs-1">
+      <col class="col-xs-7">
+    </colgroup> {% endcomment %}
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>章节</th>
+        <th>进度</th>
+        <th>code数</th>
+        <th>bug数</th>
+        <th>签到时间</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+      {% for q in data.object_list %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ request.session.nick_name }}</td>
+          <td>{{ q.stage }}</td>
+          <td>{{ q.progress }}</td>
+          <td>{{ q.code_num }}</td>
+          <td>{{ q.bug_num }}</td>
+          <td>{{ q.create_time }}</td>
+          <td>{{ q.remark }}</td>
+        </tr>
+      {% endfor %}
+                
+  </table>
+    {% include 'page.html' %}
+</div>
+{% endblock %}
+
+
+

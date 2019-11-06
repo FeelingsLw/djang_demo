@@ -40,7 +40,13 @@
             <input type="text" class="form-control" name="sex" id="username" placeholder="性别" autocomplete="off" />
           </div>
         </div>
-
+        <div class="form-group">
+            <select name="cid" class="form-control">
+                   {% for c in clazzs %}
+                      <option value="{{ c.id }}">{{ c.name }}</option>
+                   {% endfor %}
+            </select>
+        </div>
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-addon">

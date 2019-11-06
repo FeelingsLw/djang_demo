@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render,redirect,reverse
 from user.models import User
+from clazz.models import Clazz
 from django.views import View
 # Create your views here.
 
@@ -32,7 +33,8 @@ def logout(request):
 
 class RegisterView(View):
     def get(self,request):
-        return render(request,'register.html')
+        clazzs = Clazz.objects.all()
+        return render(request,'register.html',{'clazzs':clazzs})
     def post(self,request):
         # 获取从前台传来的uname
         uname = request.POST.get('uname')
@@ -44,7 +46,10 @@ class RegisterView(View):
         sex = 1 if request.POST.get('sex') == '女' else 0
         # 获取从前台传来的pwd
         pwd = request.POST.get('pwd')
-
-        user = User.objects.create(uname=uname,nick_name=nick_name,phone=phone,sex =sex,pwd=pwd)
+        # 获取从前台传来的cid
+        cid = request.POST.get('cid')
+        # 通过CID获取clazz的对象
+        clazz = Clazz.objects.filter(id=cid).first()
+        user = User.objects.create(uname=uname,nick_name=nick_name,phone=phone,sex =sex,pwd=pwd,clazz=clazz)
         # 跳转到登录页面
         return redirect(reverse('user:login'))
