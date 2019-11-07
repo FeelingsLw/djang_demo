@@ -20,6 +20,7 @@ def login(request):
         if user:
             request.session['uid'] = user.id
             request.session['nick_name'] = user.nick_name
+            request.session['rid'] = user.rid
             # 获取到数据后跳转主页
             return render(request, 'index.html')
         # 获取不到数据设置错误信息

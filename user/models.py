@@ -11,3 +11,4 @@ class User(models.Model):
     sex = models.IntegerField()
     phone = models.IntegerField()
     clazz = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    rid = models.IntegerField(default=1)
